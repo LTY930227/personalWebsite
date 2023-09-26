@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>履歷</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .path {
+            display: flex;
+            background-color: #5e5e5e;
+        }
+
+        .path li {
+            padding: 10px 15px;
+            position: relative;
+        }
+
+        .path li a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .path li a:hover {
+            color: #fa0;
+        }
+
+        .path li+li::before {
+            content: '/';
+            color: #fff;
+            position: absolute;
+            left: 0;
+        }
+
+        .data>p {
+            font-size: 25px;
+            margin: 0px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .personalInformation>p {
+            /* background-color: #d73333; */
+        }
+
+        .wrap {
+            display: flex;
+            background-color: #d75959;
+            justify-content: center;
+            height: 55vh;
+            align-items: center;
+        }
+
+        .myphoto {
+            height: 50vh;
+            margin: 0 20px;
+            border-radius: 10px;
+        }
+
+        .wrap .item {
+            display: block;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .wrap .item p {
+            padding: 14px 20px;
+        }
+        .academicQualifications .item {
+            text-align: center;
+            font-size: 20px;
+            background-color: rgb(231, 252, 5);
+        }
+
+        .academicQualifications .item p {
+            padding: 20px;
+        }
+
+        .wrap1 {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            background-color: #48c429;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .wrap1 .items {
+            padding: 70px 50px;
+        }
+
+        .wrap1 .items p {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .warp3 {
+            display: flex;
+            height: 55vh;
+            background-color: aqua;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .warp3 .item div {
+            text-align: left;
+            padding: 150px;
+            font-size: 20px;
+        }
+        .works {
+            text-align: center;
+            /* background-color: blueviolet; */
+        }
+
+        .works img {
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .weather-info {
+            justify-content: space-around;
+            align-items: center;
+            display: flex;
+            background-color: aliceblue;
+        }
+
+        .weather-info button{
+            width: 80px;
+            height: 50px;
+        }
+        
+        #weatherContainer {
+            height: 265px;
+            display: flex;
+            background-color: rgb(251, 161, 35);
+            font-size: 20px;
+            width: 300px;
+            line-height: 28px;
+        }
+
+        #weatherContainer div {
+            display: none;
+        }
+
+        #weatherContainer .active,
+        #weatherContainer div div {
+            display: block;
+            text-align: center;
+            width: 300px;
+        }
+
+        footer {
+            background-color: #aaa;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        #scrollButton {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #scrollButton:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="path">
+        <li><a href="#personalInformation">個人資料</a></li>
+        <li><a href="#academicQualifications">學經歷</a></li>
+        <li><a href="#talent">技能專長</a></li>
+        <li><a href="#projectsWorks">專案與作品集</a></li>
+    </ul>
+
+    <div class="data personalInformation">
+        <p id="personalInformation">個人資料</p>
+        <div class="wrap">
+            <img class="myphoto" src="photo/02.jpg" alt="個人照片">
+            <div class="item">
+                <p>姓名:劉琮渝</p>
+                <p>年齡:19</p>
+                <p>性別:男</p>
+                <p>電話:0966481325</p>
+                <p>E-Mail:u122127633@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="data biographicalNotes">
+        <p id="biographicalNotes">自我介紹</p>
+        <div class=" warp3">
+            <div class="item">
+                <div id="introduction">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsum
+                    temporibus cumque tempore sit pariatur cupiditate veritatis, natus molestias itaque autem
+                    accusantium, alias et? Quae nostrum libero ab consequuntur laborum!</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="data academicQualifications">
+        <p id="academicQualifications">學經歷</p>
+        <div class="item">
+            <p>現就讀慈濟科技大學</p>
+        </div>
+        <div class="item">
+            <p>經歷:</p>
+        </div>
+    </div>
+
+    <div class="data talent">
+        <p id="talent">技能專長</p>
+        <div class="wrap1">
+            <div class="items">
+                <img src="https://picsum.photos/100/100">
+                <p>高階調查與研究分析師</p>
+            </div>
+            <div class="items">
+                <img src="https://picsum.photos/100/100">
+                <p>高階調查與研究分析師</p>
+            </div>
+            <div class="items">
+                <img src="https://picsum.photos/100/100">
+                <p>高階調查與研究分析師</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="data projectsWorks">
+        <p id="projectsWorks">專案與作品集</p>
+        <!-- <div class="works">
+            <img src="https://picsum.photos/450/550">
+        </div> -->
+    </div>
+    <!-- 天氣預報 -->
+    <div class="weather-info">
+        <button id="prev">上</button>
+        <div id="weatherContainer"></div>
+        <button id="next">下</button>
+    </div>
+
+    <button onclick="scrollToTop()" id="scrollButton" title="返回頂部">回頂部</button>
+
+    <footer>
+        <p>LTY劉琮渝&copy;2023-07-10</p>
+    <footer>
+
+    <script>
+        const elementNameMap = {
+            Wx: '天氣現象',
+            MaxT: '最高溫度',
+            MinT: '最低溫度',
+            CI: '舒適度 ',
+            PoP: '降雨機率'
+        };
+
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollButton").style.display = "block";
+            } else {
+                document.getElementById("scrollButton").style.display = "none";
+            }
+        };
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+
+        const getWeatherImageUrl = (parameterValue) => {
+            if (parameterValue >= 1 && parameterValue <= 42) {
+                return `https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${String(parameterValue).padStart(2, '0')}.svg`;
+            };
+        };
+
+        const weatherContainer = document.getElementById('weatherContainer');
+        fetch("https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=JSON")
+            .then((res) => res.json())
+            .then((data) => {
+                let location = data.cwaopendata.dataset.location
+                location.forEach((taipeiWeather) => {
+                    const div1 = document.createElement("div");
+                    div1.innerHTML = `<h3>${taipeiWeather.locationName}的天氣預報<h3>`;
+                    let imageUrl = '';//天氣圖地址
+
+                    taipeiWeather.weatherElement.forEach((element) => {
+                        const chineseName = elementNameMap[element.elementName] || element.elementName;
+                        const parameterName = element.time[0].parameter.parameterName;
+                        const parameterValue = element.time[0].parameter.parameterValue;
+
+                        let parameterUnit = element.time[0].parameter.parameterUnit;
+                        if (parameterUnit === '百分比') {
+                            parameterUnit = '%';
+                        };
+
+                        const image = getWeatherImageUrl(parameterValue); // 找到對應的天氣圖
+                        if (!imageUrl && image) {
+                            imageUrl = image;
+                        };
+
+                        const weatherInfo = document.createElement('div');
+                        const displayValue = parameterUnit ? `${parameterName} ${parameterUnit}` : parameterName;
+                        weatherInfo.innerHTML = `${chineseName}: ${displayValue}`;
+                        div1.appendChild(weatherInfo);
+                    });
+
+                    if (imageUrl) {
+                        const weatherImage = document.createElement('img');
+                        weatherImage.src = imageUrl;
+                        weatherImage.style = `width: 90px; height: 90px;`
+                        div1.appendChild(weatherImage);
+                    }
+                    weatherContainer.appendChild(div1);
+                })
+            });
+        let items = weatherContainer.children;
+        let prevBtn = document.querySelector("#prev");
+        let nextBtn = document.querySelector("#next");
+        let index = 0;
+        let isButtonClicking = false; // 正在點擊按鈕
+        let weatherCarouselStarts = true; // 天氣輪播開始
+        // 計時器 每2.5秒換縣市
+        let countyToggle = setInterval(() => {
+            items[index].className = " ";
+            if (index === items.length - 1) {
+                index = -1;
+            };
+            index = index + 1;
+            items[index].className = "active";
+        }, 2500);
+        // 下按鈕 控制天氣切換
+        nextBtn.addEventListener('click', function () {
+            if (!isButtonClicking) {
+                clearInterval(countyToggle); // 清除計時器
+                weatherCarouselStarts = false;
+                isButtonClicking = true;
+                items[index].className = "";
+                if (index === items.length - 1) {
+                    index = -1;
+                }
+                index = index + 1;
+                items[index].className = "active";
+                setTimeout(() => {
+                    if (!weatherCarouselStarts) {
+                        countyToggle = setInterval(() => {
+                            items[index].className = "";
+                            if (index === items.length - 1) {
+                                index = -1;
+                            };
+                            index = index + 1;
+                            items[index].className = "active";
+                        }, 2500);
+                        weatherCarouselStarts = true;
+                    }
+                    isButtonClicking = false;
+                }, 250);
+            }
+        });
+        // 上按鈕 控制天氣切換
+        prevBtn.addEventListener('click', function () {
+            if (!isButtonClicking) {
+                clearInterval(countyToggle); // 清除計時器
+                weatherCarouselStarts = false;
+                isButtonClicking = true;
+                items[index].className = "";
+                if (index === 0) {
+                    index = items.length;
+                };
+                index = index - 1;
+                items[index].className = "active";
+                setTimeout(() => {
+                    if (!weatherCarouselStarts) {
+                        countyToggle = setInterval(() => {
+                            items[index].className = "";
+                            if (index === items.length - 1) {
+                                index = -1;
+                            };
+                            index = index + 1;
+                            items[index].className = "active";
+                        }, 2500);
+                        weatherCarouselStarts = true;
+                    }
+                    isButtonClicking = false;
+                }, 250);
+            }
+        });
+    </script>
+</body>
+
+</html>
