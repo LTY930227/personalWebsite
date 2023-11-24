@@ -182,7 +182,6 @@
     <div class="data personalInformation">
         <p id="personalInformation">個人資料</p>
         <div class="wrap">
-            <img class="myPhoto" src="02.jpg" alt="個人照片">
             <div class="item">
                 <p>姓名:劉*渝</p>
                 <p>年齡:20</p>
@@ -252,14 +251,6 @@
     <footer>
 
     <script>
-        const elementNameMap = {
-            Wx: '天氣現象',
-            MaxT: '最高溫度',
-            MinT: '最低溫度',
-            CI: '舒適度 ',
-            PoP: '降雨機率'
-        };
-
         window.onscroll = function () { scrollFunction() };
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -272,124 +263,6 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         };
-
-        const getWeatherImageUrl = (parameterValue) => {
-            if (parameterValue >= 1 && parameterValue <= 42) {
-                return `https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${String(parameterValue).padStart(2, '0')}.svg`;
-            };
-        };
-
-        const weatherContainer = document.getElementById('weatherContainer');
-        fetch("https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWA-DCE772FE-3468-4A21-8047-0FF6015735D2&downloadType=WEB&format=JSON")
-            .then((res) => res.json())
-            .then((data) => {
-                let location = data.cwaopendata.dataset.location
-                location.forEach((taipeiWeather) => {
-                    const div1 = document.createElement("div");
-                    div1.innerHTML = `<h3>${taipeiWeather.locationName}的天氣預報<h3>`;
-                    let imageUrl = '';//天氣圖地址
-
-                    taipeiWeather.weatherElement.forEach((element) => {
-                        const chineseName = elementNameMap[element.elementName] || element.elementName;
-                        const parameterName = element.time[0].parameter.parameterName;
-                        const parameterValue = element.time[0].parameter.parameterValue;
-
-                        let parameterUnit = element.time[0].parameter.parameterUnit;
-                        if (parameterUnit === '百分比') {
-                            parameterUnit = '%';
-                        };
-
-                        const image = getWeatherImageUrl(parameterValue); // 找到對應的天氣圖
-                        if (!imageUrl && image) {
-                            imageUrl = image;
-                        };
-
-                        const weatherInfo = document.createElement('div');
-                        const displayValue = parameterUnit ? `${parameterName} ${parameterUnit}` : parameterName;
-                        weatherInfo.innerHTML = `${chineseName}: ${displayValue}`;
-                        div1.appendChild(weatherInfo);
-                    });
-
-                    if (imageUrl) {
-                        const weatherImage = document.createElement('img');
-                        weatherImage.src = imageUrl;
-                        weatherImage.style = `width: 90px; height: 90px;`
-                        div1.appendChild(weatherImage);
-                    }
-                    weatherContainer.appendChild(div1);
-                })
-            });
-        let items = weatherContainer.children;
-        let prevBtn = document.querySelector("#prev");
-        let nextBtn = document.querySelector("#next");
-        let index = 0;
-        let isButtonClicking = false; // 正在點擊按鈕
-        let weatherCarouselStarts = true; // 天氣輪播開始
-        // 計時器 每2.5秒換縣市
-        let countyToggle = setInterval(() => {
-            items[index].className = " ";
-            if (index === items.length - 1) {
-                index = -1;
-            };
-            index = index + 1;
-            items[index].className = "active";
-        }, 2500);
-        // 下按鈕 控制天氣切換
-        nextBtn.addEventListener('click', function () {
-            if (!isButtonClicking) {
-                clearInterval(countyToggle); // 清除計時器
-                weatherCarouselStarts = false;
-                isButtonClicking = true;
-                items[index].className = "";
-                if (index === items.length - 1) {
-                    index = -1;
-                }
-                index = index + 1;
-                items[index].className = "active";
-                setTimeout(() => {
-                    if (!weatherCarouselStarts) {
-                        countyToggle = setInterval(() => {
-                            items[index].className = "";
-                            if (index === items.length - 1) {
-                                index = -1;
-                            };
-                            index = index + 1;
-                            items[index].className = "active";
-                        }, 2500);
-                        weatherCarouselStarts = true;
-                    }
-                    isButtonClicking = false;
-                }, 250);
-            }
-        });
-        // 上按鈕 控制天氣切換
-        prevBtn.addEventListener('click', function () {
-            if (!isButtonClicking) {
-                clearInterval(countyToggle); // 清除計時器
-                weatherCarouselStarts = false;
-                isButtonClicking = true;
-                items[index].className = "";
-                if (index === 0) {
-                    index = items.length;
-                };
-                index = index - 1;
-                items[index].className = "active";
-                setTimeout(() => {
-                    if (!weatherCarouselStarts) {
-                        countyToggle = setInterval(() => {
-                            items[index].className = "";
-                            if (index === items.length - 1) {
-                                index = -1;
-                            };
-                            index = index + 1;
-                            items[index].className = "active";
-                        }, 2500);
-                        weatherCarouselStarts = true;
-                    }
-                    isButtonClicking = false;
-                }, 250);
-            }
-        });
     </script>
 </body>
 
