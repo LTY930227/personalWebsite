@@ -280,7 +280,7 @@
         };
 
         const weatherContainer = document.getElementById('weatherContainer');
-        fetch("https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=JSON")
+        fetch("https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWA-DCE772FE-3468-4A21-8047-0FF6015735D2&downloadType=WEB&format=JSON")
             .then((res) => res.json())
             .then((data) => {
                 let location = data.cwaopendata.dataset.location
